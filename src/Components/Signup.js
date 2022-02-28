@@ -1,44 +1,46 @@
 import React, { useState, useEffect } from 'react';
-
+import { useForm } from 'react-hook-form';
 function Signup() {
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
-    const [repassword, setRepassword] = useState();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
-    function handleChange(event) {
-        event.preventDefault();
-        //I feel like I can shorten this but I'm not sure how. Brain fried
-        if (event.target.name === 'user') {
-            setUsername(event.target.value);
-        } else if (event.target.name === 'password') {
-            setPassword(event.target.value);
-        } else {
-            setRepassword(event.target.value);
-        }
-    }
-
-    function handleClick(event) {
-        event.preventDefault();
-        password === repassword
-            ? console.log('Created account')
-            : console.log('Passwords don`t match');
-    }
+    const onSubmit = data => {
+        console.log(data);
+        console.log(data.password);
+    };
     return (
         <div>
-            <form onChange={handleChange}>
-                <label htmlFor='user'>Username</label>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <label htmlFor='user'>User name</label>
                 <br />
-                <input type='text' name='user' />
+                <input
+                    name='user'
+                    type='text'
+                    {...register('username', { required: true })}
+                />
                 <br />
                 <label htmlFor='password'>Password</label>
                 <br />
-                <input type='password' name='password' />
+                <input
+                    name='password'
+                    type='password'
+                    {...register('password', { required: true })}
+                />
+                {errors.password?.type === 'required' && 'Password is required'}
                 <br />
-                <label htmlFor='reenter'>Reenter password</label>
+                <label htmlFor='confirm'>Confirm password</label>
                 <br />
-                <input type='password' name='reenter' />
+                <input
+                    name='confirm'
+                    type='password'
+                    {...register('confirmPassword', { required: true })}
+                />
+                {errors.confirmPassword && 'Confirm password is required'}
                 <br />
-                <button>Create account</button>
+                <input type='submit' />
             </form>
         </div>
     );
