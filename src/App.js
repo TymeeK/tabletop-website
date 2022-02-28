@@ -1,38 +1,20 @@
-import React, { Component, useState } from 'react';
-
-// class App extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = { counter: 0 };
-//         this.increment = this.increment.bind(this);
-//     }
-
-//     increment() {
-//         this.setState(prevState => ({ counter: prevState.counter + 1 }));
-//     }
-
-//     render() {
-//         return (
-//             <div>
-//                 <button onClick={this.increment}>
-//                     Click me! {this.state.counter}
-//                 </button>
-//             </div>
-//         );
-//     }
-// }
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './Components/Login';
+import Signup from './Components/Signup';
+import PropTypes from 'prop-types';
 
 function App() {
-    const [counter, setCounter] = useState(0);
-
-    function increment() {
-        setCounter(counter + 1);
-    }
     return (
-        <div>
-            <button onClick={increment}>Click me! {counter}</button>
-        </div>
+        <Router>
+            <Routes>
+                <Route path='/login' element={<Login />} />
+                <Route path='/signup' element={<Signup />} />
+            </Routes>
+        </Router>
     );
 }
+
+App.propTypes = {};
 
 export default App;
