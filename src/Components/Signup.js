@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import PropTypes from 'prop-types';
+
 function Signup() {
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
+
+    const [username, setUsername] = useState();
+    const [password, setPassword] = useState();
 
     const onSubmit = data => {
         console.log(data);
@@ -45,5 +50,8 @@ function Signup() {
         </div>
     );
 }
-
+Signup.propTypes = {
+    username: PropTypes.string,
+    password: PropTypes.string,
+};
 export default Signup;
