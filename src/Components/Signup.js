@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 
 function Signup() {
+    const schema = Yup.object().shape({
+        password: Yup.string()
+            .required('Password is mandatory')
+            .min(3, 'Password must be 3 char long'),
+        confirmPassword: Yup.string()
+            .required('Please confirm password')
+            .oneOf([Yup.ref('password')], 'Passwords do not match'),
+    });
+
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
-
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
 
     const onSubmit = data => {
         console.log(data);
