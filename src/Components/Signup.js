@@ -24,16 +24,17 @@ function Signup() {
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                {/* <label htmlFor='user'>User name</label>
+                <label htmlFor='user'>User name</label>
                 <br />
                 <input
                     name='user'
                     type='text'
                     {...register('username', { required: true })}
                 />
-                <br /> */}
+                <br />
                 <div className='form-group'>
                     <label>Password</label>
+                    <br />
                     <input
                         name='password'
                         type='password'
@@ -48,6 +49,7 @@ function Signup() {
                 </div>
                 <div>
                     <label htmlFor='confirmPassword'>Confirm password</label>
+                    <br />
                     <input
                         name='confirmPassword'
                         type='password'
