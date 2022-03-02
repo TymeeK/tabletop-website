@@ -13,12 +13,9 @@ function Signup() {
             .required('Please confirm password')
             .oneOf([Yup.ref('password')], 'Passwords do not match'),
     });
-
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+    const formOptions = { resolver: yupResolver(schema) };
+    const { register, handleSubmit, formState } = useForm(formOptions);
+    const { errors } = formState;
 
     const onSubmit = data => {
         console.log(data);
@@ -27,32 +24,43 @@ function Signup() {
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor='user'>User name</label>
+                {/* <label htmlFor='user'>User name</label>
                 <br />
                 <input
                     name='user'
                     type='text'
                     {...register('username', { required: true })}
                 />
-                <br />
-                <label htmlFor='password'>Password</label>
-                <br />
-                <input
-                    name='password'
-                    type='password'
-                    {...register('password', { required: true })}
-                />
-                {errors.password?.type === 'required' && 'Password is required'}
-                <br />
-                <label htmlFor='confirm'>Confirm password</label>
-                <br />
-                <input
-                    name='confirm'
-                    type='password'
-                    {...register('confirmPassword', { required: true })}
-                />
-                {errors.confirmPassword && 'Confirm password is required'}
-                <br />
+                <br /> */}
+                <div className='form-group'>
+                    <label>Password</label>
+                    <input
+                        name='password'
+                        type='password'
+                        {...register('password')}
+                        className={`form-control ${
+                            errors.password ? 'is-invalid' : ''
+                        }`}
+                    />
+                    <div className='invalid-feedback'>
+                        {errors.password?.message}
+                    </div>
+                </div>
+                <div>
+                    <label htmlFor='confirmPassword'>Confirm password</label>
+                    <input
+                        name='confirmPassword'
+                        type='password'
+                        {...register('confirmPassword')}
+                        className={`form-control ${
+                            errors.confirmPassword ? 'is-invalid' : ''
+                        }`}
+                    />
+                    <div className='invalid-feedback'>
+                        {errors.confirmPassword?.message}
+                    </div>
+                </div>
+
                 <input type='submit' />
             </form>
         </div>
