@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {
+    PageContainer,
+    FormContainer,
+    FormLabel,
+    FormDiv,
+    FormText,
+    SubmitButton,
+} from '../Styling/Form.Style';
 
 function Login() {
     const [user, setUser] = useState();
@@ -16,20 +24,28 @@ function Login() {
     }
 
     return (
-        <div>
-            <form onChange={handleChange}>
-                <label htmlFor='user'>Username</label>
-                <br />
-                <input type='text' name='user' />
-                <br />
-                <label htmlFor='pass'>Password</label>
-                <br />
-                <input type='password' />
-                <br />
-                <button>Login</button>
-                <button onClick={() => navigate('/signup')}>Sign up</button>
-            </form>
-        </div>
+        <PageContainer>
+            <FormContainer>
+                <form onChange={handleChange}>
+                    <div>
+                        <FormLabel htmlFor='user'>Username</FormLabel>
+                        <br />
+                        <FormText type='text' name='user' />
+                    </div>
+
+                    <br />
+                    <div>
+                        <FormLabel htmlFor='pass'>Password</FormLabel>
+                        <br />
+                        <FormText type='password' />
+                    </div>
+
+                    <br />
+                    <button>Login</button>
+                    <button onClick={() => navigate('/signup')}>Sign up</button>
+                </form>
+            </FormContainer>
+        </PageContainer>
     );
 }
 

@@ -9,13 +9,13 @@ import {
     FormLabel,
     FormText,
     SubmitButton,
-} from '../Styling/Signup.Style';
+} from '../Styling/Form.Style';
 
 function Signup() {
     const schema = Yup.object().shape({
         password: Yup.string()
             .required('Password is mandatory')
-            .min(3, 'Password must be 3 char long'),
+            .min(3, 'Password must be at least 3 char long'),
         confirmPassword: Yup.string()
             .required('Please confirm password')
             .oneOf([Yup.ref('password')], 'Passwords do not match'),
