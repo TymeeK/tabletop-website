@@ -3,7 +3,12 @@ import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import { PageContainer, FormContainer } from '../Styling/Signup.Style';
+import {
+    PageContainer,
+    FormContainer,
+    FormLabel,
+    FormText,
+} from '../Styling/Signup.Style';
 
 function Signup() {
     const schema = Yup.object().shape({
@@ -26,16 +31,18 @@ function Signup() {
         <PageContainer>
             <FormContainer>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <label htmlFor='user'>User name</label>
-                    <br />
-                    <input
-                        name='user'
-                        type='text'
-                        {...register('username', { required: true })}
-                    />
-                    <br />
+                    <div>
+                        <FormLabel htmlFor='user'>Username</FormLabel>
+                        <br />
+                        <input
+                            name='user'
+                            type='text'
+                            {...register('username', { required: true })}
+                        />
+                    </div>
+
                     <div className='form-group'>
-                        <label>Password</label>
+                        <FormLabel>Password</FormLabel>
                         <br />
                         <input
                             name='password'
@@ -50,9 +57,9 @@ function Signup() {
                         </div>
                     </div>
                     <div>
-                        <label htmlFor='confirmPassword'>
+                        <FormLabel htmlFor='confirmPassword'>
                             Confirm password
-                        </label>
+                        </FormLabel>
                         <br />
                         <input
                             name='confirmPassword'
