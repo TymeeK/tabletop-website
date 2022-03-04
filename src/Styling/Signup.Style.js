@@ -19,6 +19,8 @@ export const FormLabel = styled.label`
     font-size: 20px;
 `;
 
+export const FormDiv = styled.div``;
+
 export const FormText = styled.input.attrs(props => ({
     type: props.type,
 }))`
@@ -33,4 +35,11 @@ export const FormText = styled.input.attrs(props => ({
 
 export const SubmitButton = styled.input.attrs({
     type: 'submit',
-})``;
+})`
+    margin-top: 25px;
+    height: 35px;
+    width: 120px;
+    background-color: aliceblue;
+    border: 1px solid #b9b8b8;
+    border-radius: 15px;
+`;

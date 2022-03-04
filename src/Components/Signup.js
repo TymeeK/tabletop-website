@@ -8,6 +8,7 @@ import {
     FormContainer,
     FormLabel,
     FormText,
+    SubmitButton,
 } from '../Styling/Signup.Style';
 
 function Signup() {
@@ -75,7 +76,7 @@ function Signup() {
                         </div>
                     </div>
 
-                    <input type='submit' />
+                    <SubmitButton />
                 </form>
             </FormContainer>
         </PageContainer>
