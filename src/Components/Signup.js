@@ -27,6 +27,7 @@ function Signup() {
         console.log(data);
         console.log(data.password);
     };
+
     return (
         <PageContainer>
             <FormContainer>
@@ -34,19 +35,19 @@ function Signup() {
                     <div>
                         <FormLabel htmlFor='user'>Username</FormLabel>
                         <br />
-                        <input
+                        <FormText
                             name='user'
-                            type='text'
+                            type={'text'}
                             {...register('username', { required: true })}
                         />
                     </div>
 
-                    <div className='form-group'>
+                    <div>
                         <FormLabel>Password</FormLabel>
                         <br />
-                        <input
+                        <FormText
                             name='password'
-                            type='password'
+                            type={'password'}
                             {...register('password')}
                             className={`form-control ${
                                 errors.password ? 'is-invalid' : ''
@@ -61,9 +62,9 @@ function Signup() {
                             Confirm password
                         </FormLabel>
                         <br />
-                        <input
+                        <FormText
                             name='confirmPassword'
-                            type='password'
+                            type={'password'}
                             {...register('confirmPassword')}
                             className={`form-control ${
                                 errors.confirmPassword ? 'is-invalid' : ''
