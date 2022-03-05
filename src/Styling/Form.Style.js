@@ -24,6 +24,7 @@ export const FormDiv = styled.div``;
 export const FormText = styled.input.attrs(props => ({
     type: props.type,
 }))`
+    display: block;
     border-radius: 10px;
     border: 1px solid #b9b8b8;
     width: 200px;
@@ -31,12 +32,12 @@ export const FormText = styled.input.attrs(props => ({
     padding: 10px;
     box-shadow: 2px -2px 10px 2px #f3efef;
     outline: none;
+    margin-bottom: 20px;
 `;
 
 export const SubmitButton = styled.input.attrs({
     type: 'submit',
 })`
-    margin-top: 25px;
     height: 35px;
     width: 120px;
     background-color: aliceblue;

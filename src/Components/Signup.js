@@ -35,17 +35,14 @@ function Signup() {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div>
                         <FormLabel htmlFor='user'>Username</FormLabel>
-                        <br />
                         <FormText
                             name='user'
                             type={'text'}
                             {...register('username', { required: true })}
                         />
                     </div>
-
                     <div>
                         <FormLabel>Password</FormLabel>
-                        <br />
                         <FormText
                             name='password'
                             type={'password'}
@@ -62,7 +59,6 @@ function Signup() {
                         <FormLabel htmlFor='confirmPassword'>
                             Confirm password
                         </FormLabel>
-                        <br />
                         <FormText
                             name='confirmPassword'
                             type={'password'}
@@ -82,8 +78,5 @@ function Signup() {
         </PageContainer>
     );
 }
-Signup.propTypes = {
-    username: PropTypes.string,
-    password: PropTypes.string,
-};
+Signup.propTypes = {};
 export default Signup;
