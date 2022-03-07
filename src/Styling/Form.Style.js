@@ -44,3 +44,17 @@ export const SubmitButton = styled.input.attrs({
     border: 1px solid #b9b8b8;
     border-radius: 15px;
 `;
+// Styling specifically for the login component
+export const LoginSignupDiv = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+`;
+
+export const ButtonStyle = styled.button`
+    height: 35px;
+    width: 120px;
+    background-color: aliceblue;
+    border: 1px solid #b9b8b8;
+    border-radius: 15px;
+    margin-right: 30px;
+`;

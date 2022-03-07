@@ -8,6 +8,8 @@ import {
     FormDiv,
     FormText,
     SubmitButton,
+    LoginSignupDiv,
+    ButtonStyle,
 } from '../Styling/Form.Style';
 
 function Login() {
@@ -29,20 +31,20 @@ function Login() {
                 <form onChange={handleChange}>
                     <div>
                         <FormLabel htmlFor='user'>Username</FormLabel>
-                        <br />
                         <FormText type='text' name='user' />
                     </div>
 
                     <br />
                     <div>
                         <FormLabel htmlFor='pass'>Password</FormLabel>
-                        <br />
                         <FormText type='password' />
                     </div>
-
-                    <br />
-                    <button>Login</button>
-                    <button onClick={() => navigate('/signup')}>Sign up</button>
+                    <LoginSignupDiv>
+                        <ButtonStyle>Login</ButtonStyle>
+                        <ButtonStyle onClick={() => navigate('/signup')}>
+                            Sign up
+                        </ButtonStyle>
+                    </LoginSignupDiv>
                 </form>
             </FormContainer>
         </PageContainer>
