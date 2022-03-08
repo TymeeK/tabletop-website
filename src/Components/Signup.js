@@ -31,6 +31,7 @@ function Signup() {
 
     return (
         <PageContainer>
+            <h1>Create an account</h1>
             <FormContainer>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div>

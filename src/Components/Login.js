@@ -5,9 +5,7 @@ import {
     PageContainer,
     FormContainer,
     FormLabel,
-    FormDiv,
     FormText,
-    SubmitButton,
     LoginSignupDiv,
     ButtonStyle,
 } from '../Styling/Form.Style';
@@ -27,6 +25,7 @@ function Login() {
 
     return (
         <PageContainer>
+            <h1>Login</h1>
             <FormContainer>
                 <form onChange={handleChange}>
                     <div>
