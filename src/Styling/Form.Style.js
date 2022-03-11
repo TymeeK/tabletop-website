@@ -33,7 +33,6 @@ export const FormText = styled.input.attrs(props => ({
     padding: 10px;
     box-shadow: 2px -2px 10px 2px #f3efef;
     outline: none;
-    margin-bottom: 20px;
 `;
 
 export const SubmitButton = styled.input.attrs({

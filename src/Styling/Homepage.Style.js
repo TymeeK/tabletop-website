@@ -12,6 +12,10 @@ export const NavLink = styled(Link)`
 export const NavContainer = styled.nav`
     background-color: yellow;
     display: flex;
-    justify-content: space-between;'
-    
+    justify-content: space-between;
+`;
+
+export const ContentContainer = styled.div`
+    display: flex;
+    justify-content: space-around;
 `;
