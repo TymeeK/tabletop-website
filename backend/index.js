@@ -1,9 +1,14 @@
-import express from 'express'
-import {registerRoute} from './register.js'
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const { close } = require('./crud.js');
+const  { handleRegister } = require('./register.js');
 
 const app = express();
 const port = 3000;
 
-app.post('/register', registerRoute);
+app.use(bodyParser.json({ type: "text/json" }));
+
+app.post('/register', handleRegister);
 
 const server = app.listen(port, () => console.log(`Wedelve listening on port ${port}`));
