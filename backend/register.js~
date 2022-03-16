@@ -1,4 +1,0 @@
-
-export function registerRoute(res, req, next) {
-
-}
