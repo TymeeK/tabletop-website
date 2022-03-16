@@ -20,25 +20,20 @@ function validatePassword(password) {
     return true;
 }
 
-function handleRegister(req, res) {
-    const { user, pass } = req.body;
+async function register({user, pass}) {
+    if (!validateUsername(user)) {
+	throw errors.USERNAME;
+    }
+
+    if (!validatePassword(pass)) {
+	throw errors.PASSWORD;
+    }
+
+    if (await crud.getUserByName(user) !== null) {
+	throw errors.USER_EXIST;
+    }
 
     try {
-	if (!validateUsername(user)) {
-	    errors.send(res, erros.USERNAME);
-	    return;
-	}
-
-	if (!validatePassword(pass)) {
-	    errors.send(res, errors.PASSWORD);
-	    return;
-	}
-	
-	if (await crud.findUserByName(user) !== nil) {
-	    errors.send(res, errors.USER_EXIST);
-	    return;
-	}
-	
 	const salt = await randomBytes(SALT_SIZE);
 	const hash = await scrypt(pass, salt, PASS_HASH_LEN);
 	
@@ -47,10 +42,13 @@ function handleRegister(req, res) {
 	    pass: hash,
 	    salt: salt
 	});
-
-	res.status(200).send();
     } catch (err) {
-	console.dir(err);
-	errors.send(res, errors.INTERNAL);
+	throw errors.INTERNAL;
     }
+}
+
+exports.handleRegister = function(req, res) {
+    register(req.body)
+	.then(_ => res.status(200).send())
+	.catch(err => errors.send(res, err));
 }

@@ -8,13 +8,14 @@ var db = null;
 client
     .connect()
     .then(c => db = c.db("wedelve"))
+    .then(_ => console.log("Connected to database."))
     .catch(console.dir);
 
-async function getUserByName(username) {
+exports.getUserByName = async function(username) {
     return db.collection("users").findOne({ user: username });
 }
 
-async function insertUser(user) {
+exports.insertUser = async function(user) {
     return db.collection("users").insertOne(user);
 }
 
