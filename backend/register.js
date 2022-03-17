@@ -11,13 +11,14 @@ const scrypt = promisify(crypto.scrypt);
 const SALT_SIZE = 16;
 const PASS_HASH_LEN = 64;
 
-
 function validateUsername(username) {
-    return true;
+    const policy = /^[a-zA-Z0-9_-]{3,16}$/;
+    return policy.exec(username) !== null;
 }
 
 function validatePassword(password) {
-    return true;
+    const policy =  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+    return policy.exec(password) !== null;
 }
 
 async function register({user, pass}) {
