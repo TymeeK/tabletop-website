@@ -4,7 +4,7 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 import PropTypes from 'prop-types';
 import Homepage from './Components/Homepage';
-import Gameboard from './Components/Gameboard';
+import Gameboard from './Components/Gameboard/Gameboard';
 
 function App() {
     return (
